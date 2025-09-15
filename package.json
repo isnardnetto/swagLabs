@@ -1,0 +1,22 @@
+{
+  "name": "projeto-pw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test1": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx playwright test",
+    "gerar": "npx playwright codegen https://www.saucedemo.com/",
+    "test:view": "npx playwright test --headed",
+    "test:unic":"npx playwright test -g"
+    
+
+    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0"
+  }
+}
