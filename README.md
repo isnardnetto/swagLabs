@@ -1,6 +1,6 @@
 # swagLabs
 
-![Mascote do Projeto](mascote.png)
+![Mascote do Projeto](mascote01.png)
 
 Este projeto utiliza a stack moderna de desenvolvimento com foco em automação de testes end-to-end.
 
