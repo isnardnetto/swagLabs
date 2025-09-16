@@ -9,6 +9,7 @@ Este projeto utiliza a stack moderna de desenvolvimento com foco em automação 
 - **VS Code**: Ambiente de desenvolvimento recomendado para produtividade, depuração e integração com extensões.
 - **JavaScript (JS)**: Linguagem principal para scripts de automação e testes.
 - **Playwright**: Framework robusto para automação de testes de aplicações web, suportando múltiplos navegadores.
+- **BDD (Behavior Driven Development)**: Utilização de arquivos `.feature` com sintaxe Gherkin para descrever cenários de teste de forma legível e colaborativa, integrando Cucumber.js ao Playwright.
 
 ## Estrutura do Projeto
 
