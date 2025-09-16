@@ -1,13 +1,13 @@
 import { expect } from "@playwright/test";
 
-export class CarrinhoPage{
+export class CartPage{
     constructor(page){
     this.page = page;
     }
 
-    async validarQuantidadeDeItens(quantidadeProducts){
-      const componenteCarrinho = '[data-test="shopping-cart-badge"]'
-      await expect(this.page.locator(componenteCarrinho)).toHaveText(quantidadeProducts)
+    async itensValidadeOnCart(quantityProducts){
+      const cartComponent = '[data-test="shopping-cart-badge"]'
+      await expect(this.page.locator(cartComponent)).toHaveText(quantityProducts)
     }
 
     async goingToCart(){

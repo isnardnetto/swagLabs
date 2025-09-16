@@ -9,7 +9,7 @@ export class OverviewPage{
         await this.page.click(seletorCheckout)
     }
 
-    async preencherFormulario(firstName,lastName,zipPostalCode){
+    async fillForm(firstName,lastName,zipPostalCode){
         const seletorFirstName = '[data-test="firstName"]'
         await this.page.fill(seletorFirstName,firstName)
         const seletorLastName = '[data-test="lastName"]'

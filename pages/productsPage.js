@@ -4,12 +4,12 @@ export class ProductsPage {
     this.page = page;
   }
 
-  async adicionarProduto(produtoId) {
+  async addProduct(produtoId) {
     const seletor = `[data-test="add-to-cart-${produtoId}"]`;
     await this.page.click(seletor);
   }
 
-  async retirarProduto(produtoId) {
+  async removeProduct(produtoId) {
     const seletor = `[data-test="add-to-cart-${produtoId}"]`;
     await this.page.click(seletor);
   }
