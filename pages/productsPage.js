@@ -14,7 +14,7 @@ export class ProductsPage {
     await this.page.click(seletor);
   }
 
-  async scrennValidation(text1){
+  async screenValidation(text1){
     const selector = `[data-test="title"]`;
     await expect(this.page.locator(selector)).toHaveText(text1);
 

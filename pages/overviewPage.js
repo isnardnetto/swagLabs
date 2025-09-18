@@ -35,9 +35,9 @@ export class OverviewPage{
         await expect(this.page.locator(headerText)).toHaveText(text)
         }
 
-    async paymantInformation(text) {
-        const paymantValidation = '[data-test="subtotal-label"]'
-        await expect(this.page.locator(paymantValidation)).toContainText(text)
+    async paymentInformation(text) {
+        const paymentValidation = '[data-test="subtotal-label"]'
+        await expect(this.page.locator(paymentValidation)).toContainText(text)
      }
 
     async deliveryInformation(text) {
