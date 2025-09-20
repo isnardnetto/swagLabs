@@ -1,84 +1,99 @@
-
-import { Given, When, Then } from '@cucumber/cucumber';
-import { chromium } from 'playwright';
+import { Given, When, Then } from "@cucumber/cucumber";
+import { chromium } from "playwright";
 import { ProductsPage } from "../pages/productsPage.js";
-import { LoginPage } from '../pages/loginPage.js';
-import { CartPage } from '../pages/cartPage.js';
-import { OverviewPage } from '../pages/overviewPage.js';
-import {SuccessPage} from '../pages/successPage.js';
+import { LoginPage } from "../pages/loginPage.js";
+import { CartPage } from "../pages/cartPage.js";
+import { OverviewPage } from "../pages/overviewPage.js";
+import { SuccessPage } from "../pages/successPage.js";
 
-let browser , context, page;
+let browser, context, page;
 let sigIn, product, cart, overView, finalPage;
 
-Given('que estou na página de login', async () => {
-    browser = await chromium.launch({ headless: false });
-    context = await browser.newContext();
-    page = await context.newPage();
-    sigIn = new LoginPage(page)
-    product = new ProductsPage(page) 
-    cart = new CartPage(page)
-    overView = new OverviewPage(page)
-    finalPage = new SuccessPage(page)
-    await page.goto('https://www.saucedemo.com/');
-})
+Given("que estou na página de login", async () => {
+  browser = await chromium.launch({ headless: false });
+  context = await browser.newContext();
+  page = await context.newPage();
+  sigIn = new LoginPage(page);
+  product = new ProductsPage(page);
+  cart = new CartPage(page);
+  overView = new OverviewPage(page);
+  finalPage = new SuccessPage(page);
+  await page.goto("https://www.saucedemo.com/");
+});
 
-When('faço login com usuário {string} e senha {string}',async (usuario, senha) =>{
+When(
+  "faço login com usuário {string} e senha {string}",
+  async (usuario, senha) => {
     await sigIn.login(usuario, senha);
-})
+  }
+);
 
-When ('adiciono os produtos {string}, {string} e {string} ao carrinho',async (produto1, produto2, produto3) => {
-    await product.addProduct(produto1); 
+When(
+  "adiciono os produtos {string}, {string} e {string} ao carrinho",
+  async (produto1, produto2, produto3) => {
+    await product.addProduct(produto1);
     await product.addProduct(produto2);
     await product.addProduct(produto3);
-})
+  }
+);
 
-When ('o carrinho deve conter {string} itens',async (quantidade) => {
-    await cart.itensValidadeOnCart(quantidade);
-})
+When("o carrinho deve conter {string} itens", async (quantidade) => {
+  await cart.itensValidadeOnCart(quantidade);
+});
 
-When ('acesso o carrinho' ,async () => {
-    await cart.goingToCart();
-})
+When("acesso o carrinho", async () => {
+  await cart.goingToCart();
+});
 
-When ('inicio o checkout', async () =>{
-    await overView.btnCheckout();
-}) 
+When("inicio o checkout", async () => {
+  await overView.btnCheckout();
+});
 
-When ('preencho o formulário com nome {string}, sobrenome {string} e CEP {string}',async (nome1, nome2 , nome3) => {
+When(
+  "preencho o formulário com nome {string}, sobrenome {string} e CEP {string}",
+  async (nome1, nome2, nome3) => {
     await overView.fillForm(nome1, nome2, nome3);
-})
+  }
+);
 
-When ('finalizo a compra' , async() => {
-    await overView.finishButton();
-})
+When("finalizo a compra", async () => {
+  await overView.finishButton();
+});
 
-Then ('devo ver a mensagem {string}' , async (texto) => {
-    await finalPage.validateCompletedPurchase(texto);
-    await browser.close();
-})
-   
+Then("devo ver a mensagem {string}", async (texto) => {
+  await finalPage.validateCompletedPurchase(texto);
+  await page.close();
+  await browser.close();
+});
 
+When("adiciono o produto {string} ao carrinho", async (product1) => {
+  await product.addProduct(product1);
+});
 
-/* test('validatesFlow', async ({ page }) => {
-        const sigIn = new LoginPage(page)
-        const product = new ProductsPage(page) 
-        const cart = new CartPage(page)
-        const overView = new OverviewPage(page)
-        const finalPage = new SuccessPage(page)  
+When("devo ver o texto {string}", async (text1) => {
+  await cart.validateTextCartPage(text1);
+});
 
-        await page.goto('https://www.saucedemo.com/');
-        await sigIn.login('standard_user', 'secret_sauce')
-        await product.screenValidation("Products")
-        await product.addProduct('sauce-labs-onesie');
-        await cart.goingToCart()
-        await cart.validateTextCartPage("Your Cart")
-        await overView.btnCheckout()
-        await overView.validateTextInformation("Your Information")
-        await overView.fillForm("teste","teste02","599000")
-        await overView.validateHeaderTextInformation("Checkout: Overview")
-        await overView.deliveryInformation("Free Pony Express Delivery!")
-        await overView.paymentInformation("total: $7.99")
-        await overView.finishButton()
-        await finalPage.validateCompletedPurchase("Thank you for your order!")
-         */
-    //})
+Then("devo ter o texto {string}", async (text2) => {
+  await overView.validateTextInformation(text2);
+});
+
+When("devo ter o cabeçalho{string}", async (text6) => {
+  await overView.validateHeaderTextInformation(text6);
+});
+
+When("devo ver a informação de entrega {string}", async (text7) => {
+  await overView.deliveryInformation(text7);
+});
+
+When("devo ver a informação de pagamento {string}", async (text8) => {
+  await overView.paymentInformation(text8);
+});
+
+When("devo ver a tela {string}", async (texto9) => {
+  await product.screenValidation(texto9);
+});
+
+Then("devo ver o cabeçalho {string}", async (text) => {
+  await overView.validateHeaderTextInformation(text);
+});
