@@ -62,6 +62,7 @@ When("finalizo a compra", async () => {
 
 Then("devo ver a mensagem {string}", async (texto) => {
   await finalPage.validateCompletedPurchase(texto);
+  await page.screenshot({ path: `prints/sucesso_finalizacao.png` });
   await page.close();
   await browser.close();
 });
